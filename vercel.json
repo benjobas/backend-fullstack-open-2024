@@ -3,13 +3,21 @@
   "builds": [
     {
       "src": "index.js",
-      "use": "@now/node"
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1"
     }
   ]
 }
